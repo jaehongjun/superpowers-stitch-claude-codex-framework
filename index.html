@@ -524,6 +524,13 @@
                 <p>감성은 유지하면서 cheap한 느낌만 걷어내고 spacing, hierarchy, CTA 밀도를 정교하게 마무리한다.</p>
               </div>
             </div>
+            <div class="workflow-step">
+              <div class="index">11</div>
+              <div>
+                <strong>필요 시 Codex 코드리뷰</strong>
+                <p>회귀 위험, 상태 처리 누락, edge case, 복잡도, 테스트 부족을 리뷰하고 필요한 부분만 최소 수정한다.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -541,6 +548,7 @@
               <li>코드베이스 분석</li>
               <li>구현 계획 고정</li>
               <li>실제 코드 작성</li>
+              <li>필요 시 마지막 코드리뷰</li>
               <li>테스트와 검증</li>
             </ul>
           </article>
@@ -654,6 +662,15 @@
               <li>Codex는 새 디자인 제안보다 Claude Design 기준점 재현을 우선한다.</li>
               <li>Claude는 boring하거나 촌스러운 방향으로 죽이지 않고 cheap함만 걷어낸다.</li>
               <li>추론 강도: 대체로 보통</li>
+            </ul>
+          </article>
+          <article class="stage-card">
+            <strong>11단계. 필요 시 Codex 코드리뷰</strong>
+            <p>구현 후 선택적으로 <code>/review</code>를 돌려 회귀 위험, 로직 실수, 상태 누락, edge case를 마지막으로 점검한다.</p>
+            <ul>
+              <li>기존 코드베이스가 크거나 여러 worktree로 나뉜 작업일수록 효과가 크다.</li>
+              <li>작은 수정, 정적 퍼블리싱, 초기 프로토타입이면 생략 가능하다.</li>
+              <li>추론 강도: 보통</li>
             </ul>
           </article>
         </div>
@@ -792,6 +809,27 @@ Writing Plans에서 정리된 계획을 기준으로,
 - 브라우저 기본 input처럼 보이는 UI는 피할 것
 - modal/dialog 중심 흐름을 사용하지 말 것</pre>
           </article>
+          <article class="card">
+            <h3>9. 필요 시 Codex 코드리뷰</h3>
+            <pre>/review
+
+방금 구현한 변경사항을 리뷰해줘.
+
+중점:
+- 회귀 위험
+- 상태 처리 누락
+- edge case 누락
+- 불필요하게 복잡한 코드
+- API/라우트/컴포넌트 연결 상의 잠재 버그
+- 테스트/검증 부족한 부분
+
+형식:
+1. Critical issues
+2. Likely bugs
+3. Missing validation
+4. Complexity concerns
+5. Suggested fixes</pre>
+          </article>
         </div>
       </section>
 
@@ -853,7 +891,9 @@ Writing Plans에서 정리된 계획을 기준으로,
 7. Codex 코드베이스 분석
 8. Codex 구현 계획 고정
 9. Codex 실제 구현
-10. Claude로 최종 UI 정제</pre>
+10. Claude로 최종 UI 정제
+11. 필요 시 Codex 코드리뷰
+12. 마무리 수정</pre>
         </div>
       </section>
     </main>
@@ -861,8 +901,8 @@ Writing Plans에서 정리된 계획을 기준으로,
     <footer class="shell">
       Claude Design이 먼저 화면 기준점을 만들고, Claude가 그걸 구현 가능한
       제품 구조로 검수하고 다듬고, Superpowers가 실행 계획으로 바꾸고,
-      Codex가 기준점에 맞춰 구현하는 흐름을 반복 가능한 범용 프레임워크로
-      사용하는 것이 이 문서의 핵심이다.
+      Codex가 기준점에 맞춰 구현한 뒤 마지막에 필요 시 코드리뷰까지 보는
+      흐름을 반복 가능한 범용 프레임워크로 사용하는 것이 이 문서의 핵심이다.
     </footer>
   </body>
 </html>
